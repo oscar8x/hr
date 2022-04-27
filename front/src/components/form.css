@@ -1,0 +1,62 @@
+:root{
+    --radio : 3px;
+}
+.formdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #ebf2f5;
+    padding: 0 10px 0 10px;
+  }
+label{
+    color: #1675ea;
+    font-size: 0.85em;
+    font-weight: 600;
+    display: block;
+    margin-top: 1.2em;
+}
+ input[type=text], input[type=number], input[type=datetime-local] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:var(--radio);
+    padding: 0.4em;
+    border: 1px #1675ea;
+    width: 100%;
+  }
+  input[type=submit]{
+    width: 100%;
+    border-radius:var(--radio);
+    padding: 0.5em;
+    margin-top: 1em;
+    color: #fff;
+    background-color: #1675ea;
+    border: 1px solid #f2f2f2;
+    cursor: pointer;
+  }
+  input[type=submit][disabled] {
+    opacity: 0.3;
+  }
+  h3 {
+      text-align: center;
+  }
+  .form-error{
+      color: red;
+      margin-top: 0;
+  }
+  form:invalid>#submit {
+    pointer-events: none;
+  }
+  .response{
+      width: 100%;
+      background-color: rgb(100, 141, 30);
+      color: #fff;
+      text-align: center;
+      border-radius: var(--radio);
+      margin-bottom: 0.5em;
+      padding: 2px
+  }

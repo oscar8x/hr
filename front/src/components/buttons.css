@@ -1,0 +1,22 @@
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end
+}
+.buttons button {
+    width: 80px;
+    border-radius: 3px;
+    padding: 0.5em;
+    margin-top: 1em;
+    color: #fff;
+    background-color: #898b8d;
+    border: 1px solid #f2f2f2;
+    cursor: pointer;
+    display: inline-block;
+}
+.buttons button:hover {
+    background-color: #1675ea;
+}
+button.\.active {
+    background-color: #1675ea;
+}
