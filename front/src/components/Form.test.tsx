@@ -1,5 +1,5 @@
 import Form from './Form';
-import {fireEvent, render , screen, waitFor} from '@testing-library/react';
+import {fireEvent, render , screen, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
 
 it('Submit button is enabled after filling the form and send data ok', async () => {
     const mockSave= jest.fn()
@@ -18,7 +18,8 @@ it('Submit button is enabled after filling the form and send data ok', async () 
     expect(submitButton).not.toBeDisabled()
 
     fireEvent.click(submitButton)
-
+    const respDiv =screen.getByTestId("rsp")
+    
     await waitFor(() => {
         expect(mockSave).toHaveBeenCalledTimes(1)
         expect(mockSave).toHaveBeenCalledWith({
@@ -27,9 +28,10 @@ it('Submit button is enabled after filling the form and send data ok', async () 
             timestamp: '2022-04-27T10:41'
         })
 
-        const respDiv =screen.getByTestId("rsp")
         expect(respDiv).toHaveTextContent('Data saved successfully')
         expect(respDiv).toHaveClass('response')
     })
 
+    await waitFor(() => expect(respDiv).not.toHaveTextContent('Data saved successfully'), {timeout: 3000})
+  
 })
