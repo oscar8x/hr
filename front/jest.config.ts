@@ -7,4 +7,5 @@ export default {
       ".+\\.(css|styl|less|sass|scss)$": `identity-obj-proxy`,
     },
     setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+    modulePathIgnorePatterns: ["<rootDir>/dist/"]
   };
