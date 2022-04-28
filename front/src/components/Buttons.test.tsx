@@ -2,7 +2,7 @@ import {fireEvent, render ,screen} from '@testing-library/react';
 import Buttons from './Buttons';
 
 
-test('Testing Error Message component', async () => {
+test('Testing <Buttons>', async () => {
     let period = 'hour'
     
     const handleClick = jest.fn()
