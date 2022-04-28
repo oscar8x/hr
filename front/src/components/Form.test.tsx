@@ -32,6 +32,6 @@ it('Submit button is enabled after filling the form and send data ok', async () 
         expect(respDiv).toHaveClass('response')
     })
 
-    await waitFor(() => expect(respDiv).not.toHaveTextContent('Data saved successfully'), {timeout: 3000})
+    await waitFor(() => expect(respDiv).not.toHaveTextContent('Data saved successfully'), {timeout: 4000})
   
 })
