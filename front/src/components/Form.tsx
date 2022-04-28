@@ -13,8 +13,11 @@ const INITIAL_ERRORS : MyError= {
     value: {touched: false, message:''},
     timestamp: {touched: false, message:''}
 }
-
-const Form = ( {saveData} :  {saveData : any}) => {
+interface Props{
+    saveData: any,
+    setUpdateData: any
+}
+const Form = ( {saveData, setUpdateData} :  Props) => {
     const [data, setData] = useState(INITIAL_VALUES);
     const [submitDisabled, setSubmitDisabled] = useState(true);
     const [errors, setErrors] = useState<MyError>(INITIAL_ERRORS);
@@ -41,6 +44,7 @@ const Form = ( {saveData} :  {saveData : any}) => {
         setData(INITIAL_VALUES);
         setErrors(INITIAL_ERRORS);
         setSubmitDisabled(true)
+        setUpdateData(true)
     }
 
     const checkFormErrors = () : void=> {

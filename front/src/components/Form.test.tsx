@@ -5,7 +5,9 @@ it('Submit button is enabled after filling the form and send data ok', async () 
     const mockSave= jest.fn()
     mockSave.mockReturnValueOnce(Promise.resolve( 'Data saved successfully'))
 
-    render(<Form saveData={mockSave}/>)
+    const mockUpdateData= jest.fn()
+
+    render(<Form saveData={mockSave} setUpdateData={mockUpdateData}/>)
     const nameInput = screen.getByPlaceholderText(/^name of the task$/i)
     const valueInput = screen.getByLabelText(/^value$/i)
     const timeInput = screen.getByLabelText(/^time$/i)
@@ -22,6 +24,7 @@ it('Submit button is enabled after filling the form and send data ok', async () 
     
     await waitFor(() => {
         expect(mockSave).toHaveBeenCalledTimes(1)
+        expect(mockUpdateData).toHaveBeenCalledTimes(1)
         expect(mockSave).toHaveBeenCalledWith({
             name: 'Test',
             value: "100",

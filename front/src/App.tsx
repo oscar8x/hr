@@ -5,24 +5,24 @@ import ErrorMessage from './components/ErrorMessage';
 import Form from './components/Form';
 import Chart from './components/Chart';
 import { useGetData } from './hooks/useGetData';
-import { API_URL } from './utils/constants';
 import RightPanel from './components/RightPanel';
-import useSaveForm from './hooks/useSaveForm';
+import saveForm from './utils/saveForm';
 
 const App = () :JSX.Element => {
   const [period, setPeriod] = useState('hour')
-  const baseURL = `${API_URL}/metric?period=`
-  const {data = [], error} = useGetData( baseURL + period)
+  const [updateData, setUpdateData] = useState(false)
+  const {data =[] , error} = useGetData( period, updateData, setUpdateData)
 
   const handleClick = (period: string) => {
     setPeriod(period)
+    setUpdateData(true)
   }
 
   return (
     <>
     { error && <ErrorMessage message={error}/> }
     <div className="App">
-      <Form saveData={useSaveForm}/>
+      <Form saveData={saveForm} setUpdateData= {setUpdateData}/>
       <Suspense fallback={<p>Loading...</p>}> 
           <RightPanel>
             <Buttons handleClick={handleClick} period={period}/>
