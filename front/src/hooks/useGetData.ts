@@ -7,10 +7,9 @@ interface ApiResponse {
     error?: string;
 }
 
-export const useGetData = (period : string, updateData: boolean, setUpdateData : any) : ApiResponse=> {
+export const useGetData = (endpoint : string, updateData: boolean, setUpdateData : any) : ApiResponse=> {
   const [data, setData] = useState<RxData[]>([]);
   const [error, setError] = useState<string>('');
-  const baseURL = `${API_URL}/metric?period=`
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -19,7 +18,7 @@ export const useGetData = (period : string, updateData: boolean, setUpdateData :
     const fetchData = async () => {
         try {
             if(error) setError('');
-            const res = await fetch(baseURL + period)
+            const res = await fetch(API_URL + endpoint, {signal})
             const data : RxData[]= await res.json()
             
             if (!signal.aborted) setData(data)

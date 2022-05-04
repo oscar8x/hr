@@ -11,7 +11,8 @@ import saveForm from './utils/saveForm';
 const App = () :JSX.Element => {
   const [period, setPeriod] = useState('hour')
   const [updateData, setUpdateData] = useState(false)
-  const {data =[] , error} = useGetData( period, updateData, setUpdateData)
+  const periodEP = '/metric?period='
+  const {data =[] , error} = useGetData( periodEP + period, updateData, setUpdateData)
 
   const handleClick = (period: string) => {
     setPeriod(period)

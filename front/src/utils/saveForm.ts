@@ -1,8 +1,9 @@
 import {  TxData } from "../types"
+import { API_URL } from "./constants"
 
 const saveForm = (data : TxData) : Promise<string> => {
 
-    return fetch('http://localhost:3004/metric', {
+    return fetch(`${API_URL}/metric`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

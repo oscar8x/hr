@@ -5,7 +5,7 @@ export const appDataSource = new DataSource({
     database: "./src/db/metrics.sqlite",
     synchronize: true,
     logging: false,
-    dropSchema: true,
+    dropSchema: false,
     entities: ["src/entities/*.ts"],
     subscribers: [],
     migrations: [],

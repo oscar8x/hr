@@ -3,7 +3,7 @@ import morgan from "morgan";
 import { MetricRouter } from "./routes";
 
 function createServer(){
-    const app = express();
+    const app : express.Application = express();
     const cors = require('cors')
     require('dotenv').config()
 
